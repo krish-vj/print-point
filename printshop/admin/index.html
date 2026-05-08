@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrintShop Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0f14;
+  --surface: #161923;
+  --surface2: #1e2333;
+  --surface3: #252d42;
+  --border: #2a3352;
+  --accent: #f0a500;
+  --accent2: #e05c2a;
+  --text: #eaf0ff;
+  --text2: #8a97b8;
+  --text3: #4a5878;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+
+/* Sidebar */
+.sidebar {
+  width: 260px; min-height: 100vh; background: var(--surface);
+  border-right: 1px solid var(--border); display: flex; flex-direction: column;
+  position: fixed; top: 0; left: 0; z-index: 100;
+}
+.sidebar-logo {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-logo h1 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; }
+.sidebar-logo h1 span { color: var(--accent); }
+.sidebar-logo p { font-size: 0.72rem; color: var(--text3); margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
+
+.nav-section { padding: 20px 16px 8px; }
+.nav-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text3); padding: 0 8px; margin-bottom: 6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 0.88rem; font-weight: 500;
+  color: var(--text2); transition: all 0.15s; margin-bottom: 2px;
+}
+.nav-item:hover { background: var(--surface2); color: var(--text); }
+.nav-item.active { background: var(--surface3); color: var(--accent); }
+.nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
+.nav-item .badge {
+  margin-left: auto; background: var(--accent); color: #000;
+  font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 99px;
+}
+
+.sidebar-footer {
+  margin-top: auto; padding: 16px;
+  border-top: 1px solid var(--border);
+}
+.build-btn {
+  width: 100%; padding: 13px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000; font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 0.85rem; border: none; cursor: pointer;
+  transition: opacity 0.2s; letter-spacing: 0.5px;
+}
+.build-btn:hover { opacity: 0.88; }
+
+/* Main Content */
+.main { margin-left: 260px; flex: 1; min-height: 100vh; }
+.topbar {
+  padding: 20px 36px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface); position: sticky; top: 0; z-index: 50;
+}
+.topbar h2 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; }
+.topbar-actions { display: flex; gap: 10px; }
+
+.page { display: none; padding: 32px 36px; }
+.page.active { display: block; }
+
+/* Cards */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+}
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.card-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+
+/* Buttons */
+.btn {
+  padding: 9px 18px; border-radius: var(--radius-sm); font-size: 0.83rem;
+  font-weight: 600; border: none; cursor: pointer; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-primary { background: var(--accent); color: #000; }
+.btn-primary:hover { background: #ffb520; }
+.btn-secondary { background: var(--surface3); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+.btn-danger:hover { background: var(--danger); color: white; }
+.btn-success { background: var(--success); color: #000; }
+.btn-sm { padding: 6px 12px; font-size: 0.78rem; }
+.btn-icon { padding: 7px 10px; font-size: 0.85rem; }
+
+/* Forms */
+.form-group { margin-bottom: 18px; }
+.form-label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text2); margin-bottom: 7px; letter-spacing: 0.3px; }
+.form-control {
+  width: 100%; padding: 10px 14px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); font-size: 0.88rem; font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s;
+}
+.form-control:focus { outline: none; border-color: var(--accent); }
+.form-control::placeholder { color: var(--text3); }
+textarea.form-control { resize: vertical; min-height: 90px; }
+select.form-control { appearance: none; cursor: pointer; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Grid layouts */
+.category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.cat-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px;
+}
+.cat-card .cat-icon { font-size: 2rem; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; height: 48px; }
+.cat-card .cat-icon img { max-height: 48px; width: auto; object-fit: contain; }
+.cat-card .cat-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+.cat-card .cat-actions { display: flex; gap: 6px; margin-top: 12px; }
+
+/* Product cards */
+.product-list { display: flex; flex-direction: column; gap: 14px; }
+.product-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.product-thumb {
+  width: 72px; height: 72px; border-radius: var(--radius-sm);
+  object-fit: cover; background: var(--surface3); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: var(--text3); overflow: hidden;
+}
+.product-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
+.product-info { flex: 1; }
+.product-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 5px; }
+.product-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.tag {
+  display: inline-block; padding: 3px 10px; border-radius: 99px;
+  font-size: 0.72rem; font-weight: 600;
+}
+.tag-accent { background: rgba(240,165,0,0.15); color: var(--accent); }
+.tag-info { background: rgba(59,130,246,0.15); color: var(--info); }
+.tag-success { background: rgba(34,197,94,0.15); color: var(--success); }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  display: none; align-items: flex-start; justify-content: center;
+  z-index: 200; padding: 20px; overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); width: 100%; max-width: 760px;
+  margin: auto; padding: 28px;
+}
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.modal-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; }
+.modal-close { background: none; border: none; color: var(--text2); font-size: 1.3rem; cursor: pointer; padding: 4px; }
+
+/* Tabs */
+.tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+.tab {
+  padding: 10px 18px; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+  color: var(--text2); border-bottom: 2px solid transparent; transition: all 0.15s;
+  margin-bottom: -1px;
+}
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--surface3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px 18px;
+  font-size: 0.85rem; z-index: 9999; opacity: 0;
+  transform: translateY(10px); transition: all 0.3s;
+  display: flex; align-items: center; gap: 8px;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* Divider */
+.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+/* Image list */
+.image-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.image-item {
+  position: relative; width: 100px; height: 80px;
+  border-radius: var(--radius-sm); overflow: hidden;
+  border: 1px solid var(--border);
+}
+.image-item img { width: 100%; height: 100%; object-fit: cover; }
+.image-item .del-img {
+  position: absolute; top: 4px; right: 4px;
+  background: rgba(0,0,0,0.7); border: none; color: white;
+  border-radius: 50%; width: 20px; height: 20px; cursor: pointer;
+  font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
+}
+
+/* Pricing Row */
+.tier-entry { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; align-items: center; margin-bottom: 8px; }
+.pricing-combo-header { background: var(--surface3); padding: 10px 16px; border-radius: var(--radius-sm); margin-bottom: 6px; font-size: 0.82rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; justify-content: space-between; }
+.tiers-wrapper { padding: 12px; background: var(--surface2); border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 12px; }
+
+/* Slide item */
+.slide-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; display: grid; grid-template-columns: 100px 1fr auto; gap: 16px; align-items: center; }
+.slide-preview { width: 100px; height: 60px; background: var(--surface3); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+.slide-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+.section-title { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
+.section-sub { color: var(--text2); font-size: 0.85rem; margin-top: 4px; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.featured-toggle { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
+.toggle-switch { position: relative; width: 42px; height: 24px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; cursor: pointer; inset: 0; background: var(--surface3); border-radius: 99px; transition: 0.2s; border: 1px solid var(--border); }
+.toggle-slider:before { content: ''; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: var(--text2); border-radius: 50%; transition: 0.2s; }
+input:checked + .toggle-slider { background: var(--accent); border-color: var(--accent); }
+input:checked + .toggle-slider:before { transform: translateX(18px); background: #000; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo"><h1>Print<span>Craft</span></h1><p>Admin Panel</p></div>
+  <nav>
+    <div class="nav-section"><div class="nav-label">Overview</div><div class="nav-item active" onclick="showPage('dashboard')">⊞ Dashboard</div></div>
+    <div class="nav-section"><div class="nav-label">Catalogue</div>
+      <div class="nav-item" onclick="showPage('categories')">🗂️ Categories <span class="badge" id="cat-badge">0</span></div>
+      <div class="nav-item" onclick="showPage('products')">📦 Products <span class="badge" id="prod-badge">0</span></div>
+    </div>
+    <div class="nav-section"><div class="nav-label">Setup</div><div class="nav-item" onclick="showPage('business')">🏪 Business Info</div></div>
+    <div class="nav-section"><div class="nav-label">Export</div><div class="nav-item" onclick="showPage('export')">💾 Export Data</div></div>
+  </nav>
+  <div class="sidebar-footer"><button class="build-btn" onclick="exportData()">⬇️ Export data.json</button></div>
+</aside>
+
+<main class="main">
+  <div class="topbar"><h2 id="page-title">Dashboard</h2></div>
+
+  <!-- Dashboard -->
+  <div class="page active" id="page-dashboard">
+    <div class="stats-grid" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;">
+      <div class="stat-card" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;"><div id="stat-cats" style="font-size:2rem; font-weight:800; color:var(--accent);">0</div><div style="font-size:0.78rem; color:var(--text2);">Categories</div></div>
+      <div class="stat-card" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;"><div id="stat-prods" style="font-size:2rem; font-weight:800; color:var(--accent);">0</div><div style="font-size:0.78rem; color:var(--text2);">Products</div></div>
+      <div class="stat-card" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;"><div id="stat-featured" style="font-size:2rem; font-weight:800; color:var(--accent);">0</div><div style="font-size:0.78rem; color:var(--text2);">Featured</div></div>
+      <div class="stat-card" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;"><div id="stat-variants" style="font-size:2rem; font-weight:800; color:var(--accent);">0</div><div style="font-size:0.78rem; color:var(--text2);">Total Variants</div></div>
+    </div>
+    <div class="card"><div class="card-header"><div class="card-title">Quick Actions</div></div><div style="display:flex;gap:12px;"><button class="btn btn-primary" onclick="showPage('categories');openCategoryModal()">+ Add Category</button><button class="btn btn-primary" onclick="showPage('products');openProductModal()">+ Add Product</button></div></div>
+  </div>
+
+  <!-- Categories -->
+  <div class="page" id="page-categories">
+    <div class="section-header"><div><div class="section-title">Categories</div></div><button class="btn btn-primary" onclick="openCategoryModal()">+ Add Category</button></div>
+    <div class="category-grid" id="categories-grid"></div>
+  </div>
+
+  <!-- Products -->
+  <div class="page" id="page-products">
+    <div class="section-header"><div><div class="section-title">Products</div></div><button class="btn btn-primary" onclick="openProductModal()">+ Add Product</button></div>
+    <div class="product-list" id="products-list"></div>
+  </div>
+
+  <!-- Business -->
+  <div class="page" id="page-business">
+    <div class="section-header"><div><div class="section-title">Business Information</div></div><button class="btn btn-primary" onclick="saveBusiness()">Save Changes</button></div>
+    <div class="card">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Business Name</label><input class="form-control" id="biz-name"></div>
+        <div class="form-group"><label class="form-label">Tagline</label><input class="form-control" id="biz-tagline"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-control" id="biz-phone"></div>
+        <div class="form-group"><label class="form-label">WhatsApp</label><input class="form-control" id="biz-whatsapp"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="biz-email"></div>
+        <div class="form-group">
+          <label class="form-label">Logo</label>
+          <div style="display:flex;gap:8px;">
+            <input class="form-control" id="biz-logo" placeholder="Logo URL..." oninput="handleBizLogoUrl(this.value)">
+            <input type="file" id="biz-logo-file" accept="image/*" style="display:none" onchange="handleBizLogo(event)">
+            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('biz-logo-file').click()">Upload</button>
+          </div>
+          <div id="biz-logo-preview" style="margin-top:8px;display:none;"><img src="" id="biz-logo-img" style="height:40px;width:auto;border-radius:4px;background:white;padding:4px;border:1px solid var(--border);"><button class="btn btn-danger btn-sm" onclick="removeBizLogo()">Remove</button></div>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Address</label><textarea class="form-control" id="biz-address"></textarea></div>
+      
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Instagram</label><input class="form-control" id="biz-instagram"></div>
+        <div class="form-group"><label class="form-label">Facebook</label><input class="form-control" id="biz-facebook"></div>
+      </div>
+
+      <hr class="divider">
+      <div class="section-header"><div><div class="section-title">Homepage Hero Slides</div></div><button class="btn btn-secondary btn-sm" onclick="addHeroSlide()">+ Add Slide</button></div>
+      <div id="hero-slides-list" style="display:flex;flex-direction:column;gap:12px;"></div>
+    </div>
+  </div>
+
+  <!-- Export -->
+  <div class="page" id="page-export">
+    <div class="card" style="max-width:600px;"><button class="btn btn-primary" style="width:100%;" onclick="exportData()">⬇️ Save data.json</button>
+    <button class="btn btn-secondary" style="width:100%;margin-top:12px;" onclick="importData()">📤 Import data.json</button><input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(event)"></div>
+    <div class="card" style="max-width:600px;margin-top:16px;"><pre id="data-preview" style="font-size:0.72rem;color:var(--text2);white-space:pre-wrap;word-break:break-all;max-height:300px;overflow-y:auto;"></pre></div>
+  </div>
+</main>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="category-modal"><div class="modal">
+    <div class="modal-header"><div class="modal-title">Category</div><button class="modal-close" onclick="closeModal('category-modal')">✕</button></div>
+    <input type="hidden" id="cat-edit-id">
+    <div class="form-row"><div class="form-group"><label class="form-label">Name *</label><input class="form-control" id="cat-name"></div>
+      <div class="form-group"><label class="form-label">Icon (Emoji, File, or URL)</label>
+        <div style="display:flex;gap:8px;"><input class="form-control" id="cat-icon" style="width:50px;text-align:center;"><input class="form-control" id="cat-image-url" oninput="handleCatUrl(this.value)"><input type="file" id="cat-image-file" style="display:none" onchange="handleCatImage(event)"><button class="btn btn-secondary btn-sm" onclick="document.getElementById('cat-image-file').click()">File</button></div>
+        <div id="cat-image-preview" style="display:none;"><img src="" id="cat-img-tag" style="height:32px;"><button class="btn btn-danger btn-sm" onclick="removeCatImage()">✕</button></div>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">Description</label><input class="form-control" id="cat-desc"></div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;"><button class="btn btn-secondary" onclick="closeModal('category-modal')">Cancel</button><button class="btn btn-primary" onclick="saveCategory()">Save</button></div>
+</div></div>
+
+<div class="modal-overlay" id="product-modal"><div class="modal" style="max-width:900px;">
+    <div class="modal-header"><div class="modal-title">Product</div><button class="modal-close" onclick="closeModal('product-modal')">✕</button></div>
+    <input type="hidden" id="prod-edit-id">
+    <div class="tabs"><div class="tab active" onclick="switchTab(this,'tab-basic')">Basic</div><div class="tab" onclick="switchTab(this,'tab-variants')">Variants</div><div class="tab" onclick="switchTab(this,'tab-pricing')">Pricing</div></div>
+    <div class="tab-content active" id="tab-basic">
+      <div class="form-row"><div class="form-group"><label class="form-label">Name *</label><input class="form-control" id="prod-name"></div><div class="form-group"><label class="form-label">Category</label><select class="form-control" id="prod-category"></select></div></div>
+      <div class="form-group"><label class="form-label">Description</label><textarea class="form-control" id="prod-desc"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Turnaround Time</label><input class="form-control" id="prod-turnaround" placeholder="e.g. 2-3 days"></div>
+        <div class="form-group"><label class="form-label">Min Order Qty</label><input class="form-control" type="number" id="prod-minqty" value="1"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Product Images</label>
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+          <input class="form-control" id="img-url-input" placeholder="Paste image URL...">
+          <button class="btn btn-secondary" onclick="addImageUrl()">Add URL</button>
+          <input type="file" id="img-upload-file" accept="image/*" multiple style="display:none" onchange="handleProductUpload(event)">
+          <button class="btn btn-primary" onclick="document.getElementById('img-upload-file').click()">Upload Files</button>
+        </div>
+        <div id="drop-zone" style="border:2px dashed var(--border);padding:20px;text-align:center;color:var(--text3);font-size:0.83rem;margin-bottom:12px;">Drag and drop images here</div>
+        <div class="image-list" id="prod-images-list"></div>
+      </div>
+      <div class="featured-toggle"><label class="toggle-switch"><input type="checkbox" id="prod-featured"><span class="toggle-slider"></span></label><span>Featured</span></div>
+    </div>
+    <div class="tab-content" id="tab-variants"><div class="variant-list" id="variants-list"></div><button class="btn btn-secondary" onclick="addVariant()">+ Add Variant</button></div>
+    <div class="tab-content" id="tab-pricing"><div id="pricing-combos-container"></div></div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;"><button class="btn btn-secondary" onclick="closeModal('product-modal')">Cancel</button><button class="btn btn-primary" onclick="saveProduct()">Save</button></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let state = { business: { heroSlides: [] }, categories: [], products: [] };
+let currentProductImages = [], currentVariants = [], currentPricingMatrix = {}, editingProductId = null, currentCatImageIcon = null, currentBizLogo = null;
+
+window.onload = () => { loadDefaultData(); renderAll(); initDragAndDrop(); };
+
+function initDragAndDrop() {
+  const zone = document.getElementById('drop-zone'); if(!zone) return;
+  ['dragenter','dragover','dragleave','drop'].forEach(evt => zone.addEventListener(evt, e=>{e.preventDefault(); e.stopPropagation();}, false));
+  zone.addEventListener('drop', e => handleFiles(e.dataTransfer.files), false);
+}
+
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    if(!file.type.startsWith('image/')) return;
+    const reader = new FileReader(); reader.onload = e => { currentProductImages.push(e.target.result); renderProductImages(); }; reader.readAsDataURL(file);
+  });
+}
+
+function loadDefaultData() {
+  const saved = localStorage.getItem('printshop_data');
+  if(saved) { try { state = JSON.parse(saved); if(!state.business.heroSlides) state.business.heroSlides = []; } catch(e){} }
+  else { state = { business: { name: 'PrintPoint', tagline: 'Premium Printing', heroSlides: [] }, categories: [], products: [] }; }
+}
+
+function saveState() { localStorage.setItem('printshop_data', JSON.stringify(state)); updateBadges(); updateStats(); }
+function updateBadges() { document.getElementById('cat-badge').textContent = state.categories.length; document.getElementById('prod-badge').textContent = state.products.length; }
+function updateStats() { 
+  document.getElementById('stat-cats').textContent = state.categories.length; 
+  document.getElementById('stat-prods').textContent = state.products.length;
+  document.getElementById('stat-featured').textContent = state.products.filter(p => p.featured).length;
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if(id === 'categories') renderCategories();
+  if(id === 'products') renderProducts();
+  if(id === 'business') loadBusinessForm();
+  if(id === 'export') updateDataPreview();
+}
+
+function renderAll() { renderCategories(); renderProducts(); updateBadges(); updateStats(); loadBusinessForm(); }
+
+// ===================== CATEGORIES =====================
+function renderCategories() {
+  document.getElementById('categories-grid').innerHTML = state.categories.map(cat => `
+    <div class="cat-card"><div class="cat-icon">${cat.imageIcon ? `<img src="${cat.imageIcon}">` : (cat.icon || '📁')}</div><div class="cat-name">${cat.name}</div>
+    <div class="cat-actions"><button class="btn btn-secondary btn-sm" onclick="openCategoryModal('${cat.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="deleteCategory('${cat.id}')">✕</button></div></div>
+  `).join('') || '<div class="empty">No categories</div>';
+}
+function openCategoryModal(id = null) {
+  document.getElementById('cat-edit-id').value = id || '';
+  const cat = id ? state.categories.find(c => c.id === id) : null;
+  document.getElementById('cat-name').value = cat?.name || '';
+  document.getElementById('cat-icon').value = cat?.icon || '';
+  document.getElementById('cat-desc').value = cat?.description || '';
+  currentCatImageIcon = cat?.imageIcon || null;
+  document.getElementById('cat-image-url').value = (currentCatImageIcon && !currentCatImageIcon.startsWith('data:')) ? currentCatImageIcon : '';
+  document.getElementById('cat-image-preview').style.display = currentCatImageIcon ? 'block' : 'none';
+  if(currentCatImageIcon) document.getElementById('cat-img-tag').src = currentCatImageIcon;
+  openModal('category-modal');
+}
+function handleCatUrl(url) { currentCatImageIcon = url; document.getElementById('cat-image-preview').style.display = url ? 'block' : 'none'; if(url) document.getElementById('cat-img-tag').src = url; }
+function handleCatImage(e) {
+  const r = new FileReader(); r.onload = evt => { currentCatImageIcon = evt.target.result; document.getElementById('cat-image-preview').style.display = 'block'; document.getElementById('cat-img-tag').src = evt.target.result; document.getElementById('cat-image-url').value = ''; };
+  r.readAsDataURL(e.target.files[0]);
+}
+function removeCatImage() { currentCatImageIcon = null; document.getElementById('cat-image-preview').style.display = 'none'; document.getElementById('cat-image-url').value = ''; }
+function saveCategory() {
+  const name = document.getElementById('cat-name').value.trim();
+  const id = document.getElementById('cat-edit-id').value;
+  const data = { id: id || 'cat_' + Date.now(), name, icon: document.getElementById('cat-icon').value || '📁', imageIcon: currentCatImageIcon, description: document.getElementById('cat-desc').value, slug: slugify(name) };
+  if(id) { const i = state.categories.findIndex(c => c.id === id); state.categories[i] = data; }
+  else { state.categories.push(data); }
+  saveState(); renderCategories(); closeModal('category-modal');
+}
+function deleteCategory(id) { if(confirm('Delete?')) { state.categories = state.categories.filter(c => c.id !== id); saveState(); renderCategories(); } }
+
+// ===================== PRODUCTS =====================
+function renderProducts() {
+  document.getElementById('products-list').innerHTML = state.products.map(p => `
+    <div class="product-card"><div class="product-thumb">${p.images?.[0] ? `<img src="${p.images[0]}">` : '📦'}</div><div class="product-info"><div class="product-name">${p.name}</div><button class="btn btn-secondary btn-sm" onclick="openProductModal('${p.id}')">Edit</button></div></div>
+  `).join('') || '<div class="empty">No products</div>';
+}
+function openProductModal(id = null) {
+  editingProductId = id; document.getElementById('prod-edit-id').value = id || '';
+  const p = id ? state.products.find(x => x.id === id) : null;
+  document.getElementById('prod-name').value = p?.name || '';
+  document.getElementById('prod-desc').value = p?.description || '';
+  document.getElementById('prod-turnaround').value = p?.turnaround || '';
+  document.getElementById('prod-minqty').value = p?.minOrderQty || 1;
+  document.getElementById('prod-featured').checked = p?.featured || false;
+  currentProductImages = p?.images ? [...p.images] : []; renderProductImages();
+  currentVariants = p?.variants ? JSON.parse(JSON.stringify(p.variants)) : []; renderVariantsList();
+  const catSel = document.getElementById('prod-category'); catSel.innerHTML = '<option value="">None</option>' + state.categories.map(c => `<option value="${c.id}" ${p?.categoryId===c.id?'selected':''}>${c.name}</option>`).join('');
+  openModal('product-modal');
+}
+function handleProductUpload(e) { handleFiles(e.target.files); }
+function addImageUrl() { const inp = document.getElementById('img-url-input'); if(inp.value.trim()){ currentProductImages.push(inp.value.trim()); inp.value = ''; renderProductImages(); } }
+function renderProductImages() { document.getElementById('prod-images-list').innerHTML = currentProductImages.map((u, i) => `<div class="image-item"><img src="${u}"><button class="del-img" onclick="currentProductImages.splice(${i},1);renderProductImages()">✕</button></div>`).join(''); }
+
+function renderVariantsList() {
+  document.getElementById('variants-list').innerHTML = currentVariants.map((v, i) => `
+    <div class="variant-item"><input class="form-control" value="${v.name}" onchange="currentVariants[${i}].name=this.value"><div class="options-row">${v.options.map((o, oi) => `<div class="option-chip">${o}<button onclick="currentVariants[${i}].options.splice(${oi},1);renderVariantsList()">×</button></div>`).join('')}<input placeholder="Add" onkeypress="if(event.key==='Enter'){currentVariants[${i}].options.push(this.value);renderVariantsList()}"></div></div>
+  `).join('');
+}
+function addVariant() { currentVariants.push({ id: 'v'+Date.now(), name: '', options: [] }); renderVariantsList(); }
+function saveProduct() {
+  const name = document.getElementById('prod-name').value.trim();
+  if(!name) return;
+  const id = document.getElementById('prod-edit-id').value;
+  const d = { 
+    id: id || 'p'+Date.now(), 
+    name: name, 
+    slug: slugify(name), 
+    categoryId: document.getElementById('prod-category').value, 
+    images: currentProductImages, 
+    description: document.getElementById('prod-desc').value, 
+    variants: currentVariants, 
+    featured: document.getElementById('prod-featured').checked,
+    turnaround: document.getElementById('prod-turnaround').value,
+    minOrderQty: parseInt(document.getElementById('prod-minqty').value) || 1
+  };
+  if(id) { const i = state.products.findIndex(x => x.id === id); state.products[i] = d; } else { state.products.push(d); }
+  saveState(); renderProducts(); closeModal('product-modal');
+}
+
+// ===================== BUSINESS & HERO =====================
+function loadBusinessForm() {
+  const b = state.business; document.getElementById('biz-name').value = b.name || ''; document.getElementById('biz-tagline').value = b.tagline || '';
+  document.getElementById('biz-phone').value = b.phone || ''; document.getElementById('biz-whatsapp').value = b.whatsapp || '';
+  document.getElementById('biz-email').value = b.email || ''; document.getElementById('biz-address').value = b.address || '';
+  document.getElementById('biz-instagram').value = b.socialLinks?.instagram || ''; document.getElementById('biz-facebook').value = b.socialLinks?.facebook || '';
+  currentBizLogo = b.logo || null;
+  document.getElementById('biz-logo').value = (currentBizLogo && !currentBizLogo.startsWith('data:')) ? currentBizLogo : '';
+  document.getElementById('biz-logo-preview').style.display = currentBizLogo ? 'block' : 'none';
+  if(currentBizLogo) document.getElementById('biz-logo-img').src = currentBizLogo;
+  renderHeroSlides();
+}
+function handleBizLogoUrl(u) { currentBizLogo = u; document.getElementById('biz-logo-preview').style.display = u ? 'block' : 'none'; if(u) document.getElementById('biz-logo-img').src = u; }
+function handleBizLogo(e) { const r = new FileReader(); r.onload = evt => { currentBizLogo = evt.target.result; document.getElementById('biz-logo-preview').style.display = 'block'; document.getElementById('biz-logo-img').src = evt.target.result; document.getElementById('biz-logo').value = ''; }; r.readAsDataURL(e.target.files[0]); }
+function removeBizLogo() { currentBizLogo = null; document.getElementById('biz-logo-preview').style.display = 'none'; document.getElementById('biz-logo').value = ''; }
+
+function renderHeroSlides() {
+  const list = document.getElementById('hero-slides-list');
+  list.innerHTML = (state.business.heroSlides || []).map((s, i) => `
+    <div class="slide-item">
+      <div class="slide-preview"><img src="${s.image}"></div>
+      <div style="flex:1"><input class="form-control" value="${s.image}" onchange="state.business.heroSlides[${i}].image=this.value;renderHeroSlides()" placeholder="Image URL">
+           <input class="form-control" style="margin-top:8px" value="${s.caption}" onchange="state.business.heroSlides[${i}].caption=this.value" placeholder="Caption"></div>
+      <button class="btn btn-danger btn-sm" onclick="state.business.heroSlides.splice(${i},1);renderHeroSlides()">✕</button>
+    </div>
+  `).join('') || '<p style="font-size:0.8rem;color:var(--text3)">No slides added.</p>';
+}
+function addHeroSlide() { if(!state.business.heroSlides) state.business.heroSlides = []; state.business.heroSlides.push({ image: '', caption: '' }); renderHeroSlides(); }
+function saveBusiness() {
+  state.business = { ...state.business, name: document.getElementById('biz-name').value, tagline: document.getElementById('biz-tagline').value, phone: document.getElementById('biz-phone').value, whatsapp: document.getElementById('biz-whatsapp').value, email: document.getElementById('biz-email').value, logo: currentBizLogo, address: document.getElementById('biz-address').value, socialLinks: { instagram: document.getElementById('biz-instagram').value, facebook: document.getElementById('biz-facebook').value } };
+  saveState(); showToast('Saved');
+}
+
+// ===================== EXPORT / UTILS =====================
+async function exportData() {
+  const json = JSON.stringify(state, null, 2);
+  if (window.location.protocol === 'file:' && window.showDirectoryPicker) {
+    try {
+      const dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+      let h; try { h = await dirHandle.getFileHandle('data.json'); } catch (e) {}
+      if (h) {
+        let c = '', bName = ''; while (true) { bName = `olddata${c}.json`; try { await dirHandle.getFileHandle(bName); c = c === '' ? 1 : c + 1; } catch (e) { break; } }
+        const file = await h.getFile(); const contents = await file.text();
+        const bh = await dirHandle.getFileHandle(bName, { create: true }); const bw = await bh.createWritable(); await bw.write(contents); await bw.close();
+      }
+      const nh = await dirHandle.getFileHandle('data.json', { create: true }); const w = await nh.createWritable(); await w.write(json); await w.close();
+      showToast('Saved & Backed Up'); return;
+    } catch (e) {}
+  }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = 'data.json'; a.click();
+}
+function importData() { document.getElementById('import-file').click(); }
+function handleImport(e) { const r = new FileReader(); r.onload = evt => { state = JSON.parse(evt.target.result); if(!state.business.heroSlides) state.business.heroSlides = []; saveState(); renderAll(); }; r.readAsText(e.target.files[0]); }
+function updateDataPreview() { document.getElementById('data-preview').textContent = JSON.stringify(state, null, 2); }
+function slugify(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function showToast(m, t='success') { const el = document.getElementById('toast'); el.textContent = m; el.className = 'toast '+t+' show'; setTimeout(() => el.classList.remove('show'), 2000); }
+function switchTab(el, id) { el.closest('.modal').querySelectorAll('.tab').forEach(t => t.classList.remove('active')); el.closest('.modal').querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); el.classList.add('active'); document.getElementById(id).classList.add('active'); }
+</script>
+</body>
+</html>

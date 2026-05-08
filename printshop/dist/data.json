@@ -1,0 +1,364 @@
+{
+  "business": {
+    "name": "PrintPoint",
+    "tagline": "Premium Printing, Delivered Fast",
+    "phone": "+91 8898261111",
+    "whatsapp": "918898261111",
+    "email": "v.eprintpoint@gmail.com",
+    "logo": "/assets/img_1778267238651_0.png",
+    "address": "BKC, Mumbai",
+    "socialLinks": {
+      "instagram": "https://www.instagram.com/printp313/",
+      "facebook": ""
+    },
+    "heroSlides": [
+      {
+        "image": "https://www.cmzoo.org/wp-content/uploads/WH-7-2025-Lion_Abuto_CaitlinG_7.24.25-7A-400x600.jpg",
+        "caption": "Vyom"
+      },
+      {
+        "image": "https://cdn.britannica.com/68/143568-050-5246474F/Donkey.jpg",
+        "caption": "Krish"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "cat_1778239855882",
+      "name": "Majdoor subcategory",
+      "icon": "📁",
+      "imageIcon": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/250px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
+      "description": "idk",
+      "slug": "majdoor-subcategory",
+      "parentId": "cat_1778239886476"
+    },
+    {
+      "id": "cat_1778239886476",
+      "name": "Majdoor",
+      "icon": "📁",
+      "imageIcon": "/assets/img_1778267238653_1.png",
+      "description": "sasti dihadi now at your doorstep",
+      "slug": "majdoor",
+      "parentId": null
+    },
+    {
+      "id": "cat_1778258435585",
+      "name": "Icecream",
+      "icon": "📁",
+      "imageIcon": "https://content.jdmagicbox.com/quickquotes/images_main/butterscotch-ice-cream-tub-801321667-f2hakgsm.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit",
+      "description": "thandi thandi",
+      "slug": "icecream"
+    },
+    {
+      "id": "cat_1778258476345",
+      "name": "Gulab Jamun",
+      "icon": "📁",
+      "imageIcon": "https://www.vegrecipesofindia.com/wp-content/uploads/2022/10/gulab-jamun-recipe-01.jpg",
+      "description": "garam garam",
+      "slug": "gulab-jamun"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_1778240050315",
+      "name": "Krish",
+      "slug": "krish",
+      "categoryId": "cat_1778239886476",
+      "description": "Lazy and Stupid",
+      "images": [
+        "https://cdn.britannica.com/68/143568-050-5246474F/Donkey.jpg"
+      ],
+      "variants": [
+        {
+          "id": "var_1778239955171",
+          "name": "Eyes Type",
+          "options": [
+            "Chasmish",
+            "Non Chasmish"
+          ]
+        },
+        {
+          "id": "var_1778239974671",
+          "name": "Weight",
+          "options": [
+            "Patlu",
+            "Motu",
+            "Fit"
+          ]
+        },
+        {
+          "id": "var_1778239995246",
+          "name": "Intelligence",
+          "options": [
+            "gadha",
+            "samajdar"
+          ]
+        }
+      ],
+      "pricingMatrix": {
+        "Chasmish|Patlu|gadha": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 10
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 8
+            }
+          ]
+        },
+        "Chasmish|Patlu|samajdar": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Chasmish|Motu|gadha": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Chasmish|Motu|samajdar": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Chasmish|Fit|gadha": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Chasmish|Fit|samajdar": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Non Chasmish|Patlu|gadha": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Non Chasmish|Patlu|samajdar": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Non Chasmish|Motu|gadha": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Non Chasmish|Motu|samajdar": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Non Chasmish|Fit|gadha": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        },
+        "Non Chasmish|Fit|samajdar": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": 499,
+              "pricePerUnit": 0
+            },
+            {
+              "minQty": 500,
+              "maxQty": null,
+              "pricePerUnit": 0
+            }
+          ]
+        }
+      },
+      "minOrderQty": 100,
+      "turnaround": "1 day",
+      "featured": true
+    },
+    {
+      "id": "prod_1778249370835",
+      "name": "Vyom",
+      "slug": "vyom",
+      "categoryId": "cat_1778239886476",
+      "description": "Hardworking and Handsome",
+      "images": [
+        "https://i.pinimg.com/736x/8d/97/a4/8d97a44b7c0e8992cfd41f2542c21a2f.jpg"
+      ],
+      "variants": [],
+      "pricingMatrix": {},
+      "minOrderQty": 100,
+      "turnaround": "2",
+      "featured": true
+    },
+    {
+      "id": "prod_1778249427876",
+      "name": "Suresh",
+      "slug": "suresh",
+      "categoryId": "cat_1778239886476",
+      "description": "normal majdoor",
+      "images": [
+        "https://i.timesnowhindi.com/stories/MAJDOOR-AP_0.jpg"
+      ],
+      "variants": [],
+      "pricingMatrix": {},
+      "minOrderQty": 150,
+      "turnaround": "3",
+      "featured": true
+    },
+    {
+      "id": "prod_1778251398304",
+      "name": "Kanye West",
+      "slug": "kanye-west",
+      "categoryId": "cat_1778239855882",
+      "description": "Celebrity majdoor",
+      "images": [
+        "https://ca-times.brightspotcdn.com/dims4/default/7ddc181/2147483647/strip/true/crop/2000x1397+0+0/resize/1200x838!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc3%2F86%2F10fca4684649a3c15aa085ad1423%2Fap22283068909163.jpg"
+      ],
+      "variants": [
+        {
+          "id": "var_1778251409027",
+          "name": "Luxury",
+          "options": [
+            "premium"
+          ]
+        }
+      ],
+      "pricingMatrix": {
+        "premium": {
+          "tiers": [
+            {
+              "minQty": 1,
+              "maxQty": null,
+              "pricePerUnit": 10000
+            }
+          ]
+        }
+      },
+      "minOrderQty": 1,
+      "turnaround": "7",
+      "featured": true
+    },
+    {
+      "id": "p1778260328679",
+      "name": "Mango",
+      "slug": "mango",
+      "categoryId": "cat_1778258435585",
+      "images": [
+        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=1080/da/cms-assets/cms/product/fa246419-bb26-4188-868c-9f3077ab15f4.png"
+      ],
+      "description": "thandi thandi",
+      "variants": [],
+      "featured": true,
+      "turnaround": "2",
+      "minOrderQty": 1
+    },
+    {
+      "id": "p1778264563240",
+      "name": "choclate",
+      "slug": "choclate",
+      "categoryId": "cat_1778258435585",
+      "images": [
+        "https://www.cadburydessertscorner.com/hs-fs/hubfs/dc-website-2022/articles/bournville-dark-chocolate-ice-cream-why-not/bournville-dark-chocolate-ice-cream-why-not-feature.webp?width=768&height=432&name=bournville-dark-chocolate-ice-cream-why-not-feature.webp"
+      ],
+      "description": "thandi thandi",
+      "variants": [],
+      "featured": false,
+      "turnaround": "1",
+      "minOrderQty": 1
+    }
+  ]
+}
