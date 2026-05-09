@@ -387,20 +387,6 @@
       "featured": false,
       "turnaround": "1",
       "minOrderQty": 1
-    },
-    {
-      "id": "p1778313160575",
-      "name": "Chikoo",
-      "slug": "chikoo",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://th.bing.com/th/id/OIP.IF6O7wEMyhSMPKVtf8CJ-wHaFP?w=255&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3"
-      ],
-      "description": "chikooo",
-      "variants": [],
-      "featured": false,
-      "turnaround": "",
-      "minOrderQty": 1
     }
   ]
 }

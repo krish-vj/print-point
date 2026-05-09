@@ -5,7 +5,7 @@
     "phone": "+91 8898261111",
     "whatsapp": "918898261111",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1778309681648_0.png",
+    "logo": "/assets/img_1778313210922_0.png",
     "address": "BKC, Mumbai",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
@@ -36,7 +36,7 @@
       "id": "cat_1778239886476",
       "name": "Majdoor",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778309681649_1.png",
+      "imageIcon": "/assets/img_1778313210922_1.png",
       "description": "sasti dihadi now at your doorstep",
       "slug": "majdoor",
       "parentId": null
@@ -386,6 +386,20 @@
       "variants": [],
       "featured": false,
       "turnaround": "1",
+      "minOrderQty": 1
+    },
+    {
+      "id": "p1778313160575",
+      "name": "Chikoo",
+      "slug": "chikoo",
+      "categoryId": "cat_1778258435585",
+      "images": [
+        "https://th.bing.com/th/id/OIP.IF6O7wEMyhSMPKVtf8CJ-wHaFP?w=255&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3"
+      ],
+      "description": "chikooo",
+      "variants": [],
+      "featured": false,
+      "turnaround": "",
       "minOrderQty": 1
     }
   ]
