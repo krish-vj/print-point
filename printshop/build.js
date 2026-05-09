@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 // ───── Load Data ─────
-const dataPath = path.join(__dirname, 'maro.json');
+const dataPath = path.join(__dirname, 'data.json');
 if (!fs.existsSync(dataPath)) {
   console.error('❌ data.json not found. Export it from the Admin panel first.');
   process.exit(1);

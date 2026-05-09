@@ -5,7 +5,7 @@
     "phone": "+91 8898261111",
     "whatsapp": "918898261111",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1778267238651_0.png",
+    "logo": "/assets/img_1778309681648_0.png",
     "address": "BKC, Mumbai",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
@@ -36,7 +36,7 @@
       "id": "cat_1778239886476",
       "name": "Majdoor",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778267238653_1.png",
+      "imageIcon": "/assets/img_1778309681649_1.png",
       "description": "sasti dihadi now at your doorstep",
       "slug": "majdoor",
       "parentId": null
@@ -353,6 +353,34 @@
       "categoryId": "cat_1778258435585",
       "images": [
         "https://www.cadburydessertscorner.com/hs-fs/hubfs/dc-website-2022/articles/bournville-dark-chocolate-ice-cream-why-not/bournville-dark-chocolate-ice-cream-why-not-feature.webp?width=768&height=432&name=bournville-dark-chocolate-ice-cream-why-not-feature.webp"
+      ],
+      "description": "thandi thandi",
+      "variants": [],
+      "featured": false,
+      "turnaround": "1",
+      "minOrderQty": 1
+    },
+    {
+      "id": "p1778309286606",
+      "name": "Ajay Devgan",
+      "slug": "ajay-devgan",
+      "categoryId": "cat_1778239855882",
+      "images": [
+        "https://etimg.etb2bimg.com/photo/88403238.cms"
+      ],
+      "description": "Indian celbrity majdoor",
+      "variants": [],
+      "featured": true,
+      "turnaround": "2",
+      "minOrderQty": 1
+    },
+    {
+      "id": "p1778309594686",
+      "name": "Vanilla",
+      "slug": "vanilla",
+      "categoryId": "cat_1778258435585",
+      "images": [
+        "https://static.toiimg.com/thumb/54677722.cms?imgsize=134423&width=800&height=800"
       ],
       "description": "thandi thandi",
       "variants": [],

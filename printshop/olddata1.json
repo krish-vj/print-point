@@ -373,20 +373,6 @@
       "featured": true,
       "turnaround": "2",
       "minOrderQty": 1
-    },
-    {
-      "id": "p1778309594686",
-      "name": "Vanilla",
-      "slug": "vanilla",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://static.toiimg.com/thumb/54677722.cms?imgsize=134423&width=800&height=800"
-      ],
-      "description": "thandi thandi",
-      "variants": [],
-      "featured": false,
-      "turnaround": "1",
-      "minOrderQty": 1
     }
   ]
 }
