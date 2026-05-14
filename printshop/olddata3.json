@@ -401,20 +401,6 @@
       "featured": false,
       "turnaround": "",
       "minOrderQty": 1
-    },
-    {
-      "id": "p1778742128303",
-      "name": "visiting card ice",
-      "slug": "visiting-card-ice",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://www.simplysated.com/wp-content/uploads/2014/08/Homemade-Vanilla-Ice-Cream-A22-1-P7270022.jpg"
-      ],
-      "description": "timepass",
-      "variants": [],
-      "featured": true,
-      "turnaround": "1",
-      "minOrderQty": 1
     }
   ]
 }

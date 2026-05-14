@@ -5,7 +5,7 @@
     "phone": "+91 8898261111",
     "whatsapp": "918898261111",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1778741618756_0.png",
+    "logo": "/assets/img_1778742204480_0.png",
     "address": "BKC, Mumbai",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
@@ -36,7 +36,7 @@
       "id": "cat_1778239886476",
       "name": "Majdoor",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778741618757_1.png",
+      "imageIcon": "/assets/img_1778742204481_1.png",
       "description": "sasti dihadi now at your doorstep",
       "slug": "majdoor",
       "parentId": null
@@ -400,6 +400,20 @@
       "variants": [],
       "featured": false,
       "turnaround": "",
+      "minOrderQty": 1
+    },
+    {
+      "id": "p1778742128303",
+      "name": "visiting card ice",
+      "slug": "visiting-card-ice",
+      "categoryId": "cat_1778258435585",
+      "images": [
+        "https://www.simplysated.com/wp-content/uploads/2014/08/Homemade-Vanilla-Ice-Cream-A22-1-P7270022.jpg"
+      ],
+      "description": "timepass",
+      "variants": [],
+      "featured": true,
+      "turnaround": "1",
       "minOrderQty": 1
     }
   ]
