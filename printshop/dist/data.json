@@ -5,7 +5,7 @@
     "phone": "+91 8898261111",
     "whatsapp": "918898261111",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1778742204480_0.png",
+    "logo": "/assets/img_1778743005504_0.png",
     "address": "BKC, Mumbai",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
@@ -36,7 +36,7 @@
       "id": "cat_1778239886476",
       "name": "Majdoor",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778742204481_1.png",
+      "imageIcon": "/assets/img_1778743005505_1.png",
       "description": "sasti dihadi now at your doorstep",
       "slug": "majdoor",
       "parentId": null
@@ -56,6 +56,14 @@
       "imageIcon": "https://www.vegrecipesofindia.com/wp-content/uploads/2022/10/gulab-jamun-recipe-01.jpg",
       "description": "garam garam",
       "slug": "gulab-jamun"
+    },
+    {
+      "id": "cat_1778742919951",
+      "name": "VISITING CARDS",
+      "icon": "📁",
+      "imageIcon": "/assets/img_1778743005507_2.png",
+      "description": "",
+      "slug": "visiting-cards"
     }
   ],
   "products": [
