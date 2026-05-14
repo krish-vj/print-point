@@ -215,9 +215,15 @@ select.form-control { appearance: none; cursor: pointer; }
 }
 
 /* Pricing Row */
-.tier-entry { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; align-items: center; margin-bottom: 8px; }
-.pricing-combo-header { background: var(--surface3); padding: 10px 16px; border-radius: var(--radius-sm); margin-bottom: 6px; font-size: 0.82rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; justify-content: space-between; }
-.tiers-wrapper { padding: 12px; background: var(--surface2); border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 12px; }
+.tier-entry { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: center; margin-bottom: 8px; }
+.pricing-combo-header { background: var(--surface3); padding: 12px 16px; border-radius: var(--radius-sm); margin: 16px 0 8px; font-size: 0.85rem; font-weight: 700; color: var(--accent); display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border); }
+.tiers-wrapper { padding: 16px; background: var(--surface2); border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 12px; }
+.variant-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.options-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+.option-chip { background: var(--surface3); color: var(--text); padding: 4px 10px; border-radius: 99px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; border: 1px solid var(--border); }
+.option-chip button { background: none; border: none; color: var(--text3); cursor: pointer; font-size: 1rem; line-height: 1; display: flex; align-items: center; justify-content: center; }
+.option-chip button:hover { color: var(--danger); }
+.bulk-actions { background: var(--surface2); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 16px; border: 1px solid var(--info); display: flex; align-items: center; justify-content: space-between; }
 
 /* Slide item */
 .slide-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; display: grid; grid-template-columns: 100px 1fr auto; gap: 16px; align-items: center; }
@@ -450,35 +456,204 @@ function deleteCategory(id) { if(confirm('Delete?')) { state.categories = state.
 // ===================== PRODUCTS =====================
 function renderProducts() {
   document.getElementById('products-list').innerHTML = state.products.map(p => `
-    <div class="product-card"><div class="product-thumb">${p.images?.[0] ? `<img src="${p.images[0]}">` : '📦'}</div><div class="product-info"><div class="product-name">${p.name}</div><button class="btn btn-secondary btn-sm" onclick="openProductModal('${p.id}')">Edit</button></div></div>
+    <div class="product-card">
+      <div class="product-thumb">${p.images?.[0] ? `<img src="${p.images[0]}">` : '📦'}</div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div style="font-size:0.75rem;color:var(--text3);margin-top:4px;">${p.variants?.length || 0} Variants • ${p.categoryId ? (state.categories.find(c=>c.id===p.categoryId)?.name || 'Unknown') : 'No Category'}</div>
+        <div class="product-actions" style="margin-top:10px;">
+          <button class="btn btn-secondary btn-sm" onclick="openProductModal('${p.id}')">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">✕</button>
+        </div>
+      </div>
+    </div>
   `).join('') || '<div class="empty">No products</div>';
 }
+
 function openProductModal(id = null) {
-  editingProductId = id; document.getElementById('prod-edit-id').value = id || '';
+  editingProductId = id; 
+  document.getElementById('prod-edit-id').value = id || '';
   const p = id ? state.products.find(x => x.id === id) : null;
+  
   document.getElementById('prod-name').value = p?.name || '';
   document.getElementById('prod-desc').value = p?.description || '';
   document.getElementById('prod-turnaround').value = p?.turnaround || '';
   document.getElementById('prod-minqty').value = p?.minOrderQty || 1;
   document.getElementById('prod-featured').checked = p?.featured || false;
-  currentProductImages = p?.images ? [...p.images] : []; renderProductImages();
-  currentVariants = p?.variants ? JSON.parse(JSON.stringify(p.variants)) : []; renderVariantsList();
-  const catSel = document.getElementById('prod-category'); catSel.innerHTML = '<option value="">None</option>' + state.categories.map(c => `<option value="${c.id}" ${p?.categoryId===c.id?'selected':''}>${c.name}</option>`).join('');
+  
+  currentProductImages = p?.images ? [...p.images] : []; 
+  renderProductImages();
+  
+  currentVariants = p?.variants ? JSON.parse(JSON.stringify(p.variants)) : []; 
+  renderVariantsList();
+  
+  currentPricingMatrix = p?.pricingMatrix ? JSON.parse(JSON.stringify(p.pricingMatrix)) : {};
+  
+  const catSel = document.getElementById('prod-category'); 
+  catSel.innerHTML = '<option value="">None</option>' + state.categories.map(c => `<option value="${c.id}" ${p?.categoryId===c.id?'selected':''}>${c.name}</option>`).join('');
+  
+  switchTab(document.querySelector('.tab'), 'tab-basic');
   openModal('product-modal');
 }
+
+function deleteProduct(id) {
+  if(confirm('Are you sure you want to delete this product?')) {
+    state.products = state.products.filter(p => p.id !== id);
+    saveState();
+    renderProducts();
+  }
+}
+
 function handleProductUpload(e) { handleFiles(e.target.files); }
 function addImageUrl() { const inp = document.getElementById('img-url-input'); if(inp.value.trim()){ currentProductImages.push(inp.value.trim()); inp.value = ''; renderProductImages(); } }
 function renderProductImages() { document.getElementById('prod-images-list').innerHTML = currentProductImages.map((u, i) => `<div class="image-item"><img src="${u}"><button class="del-img" onclick="currentProductImages.splice(${i},1);renderProductImages()">✕</button></div>`).join(''); }
 
 function renderVariantsList() {
-  document.getElementById('variants-list').innerHTML = currentVariants.map((v, i) => `
-    <div class="variant-item"><input class="form-control" value="${v.name}" onchange="currentVariants[${i}].name=this.value"><div class="options-row">${v.options.map((o, oi) => `<div class="option-chip">${o}<button onclick="currentVariants[${i}].options.splice(${oi},1);renderVariantsList()">×</button></div>`).join('')}<input placeholder="Add" onkeypress="if(event.key==='Enter'){currentVariants[${i}].options.push(this.value);renderVariantsList()}"></div></div>
+  const container = document.getElementById('variants-list');
+  container.innerHTML = currentVariants.map((v, i) => `
+    <div class="variant-item">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+        <input class="form-control" placeholder="Variant Name (e.g. Size)" value="${v.name}" onchange="currentVariants[${i}].name=this.value">
+        <button class="btn btn-danger btn-sm" onclick="currentVariants.splice(${i},1);renderVariantsList()">✕</button>
+      </div>
+      <div class="options-row">
+        ${(v.options || []).map((o, oi) => `
+          <div class="option-chip">${o} <button onclick="currentVariants[${i}].options.splice(${oi},1);renderVariantsList()">×</button></div>
+        `).join('')}
+        <input class="form-control" style="width:120px;padding:6px 10px;" placeholder="+ Option" onkeypress="if(event.key==='Enter'){ if(this.value.trim()){ currentVariants[${i}].options.push(this.value.trim()); this.value=''; renderVariantsList(); } }">
+      </div>
+    </div>
   `).join('');
+  
+  if (currentVariants.length === 0) {
+    container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text3);font-size:0.85rem;">No variants. Price will be based on quantity only.</div>';
+  }
 }
-function addVariant() { currentVariants.push({ id: 'v'+Date.now(), name: '', options: [] }); renderVariantsList(); }
+
+function addVariant() { 
+  currentVariants.push({ id: 'v'+Date.now(), name: '', options: [] }); 
+  renderVariantsList(); 
+}
+
+function getCombinations(variants) {
+  if (!variants || variants.length === 0) return [""];
+  let results = [[]];
+  for (let v of variants) {
+    let newResults = [];
+    let opts = v.options && v.options.length > 0 ? v.options : ["Standard"];
+    for (let opt of opts) {
+      for (let res of results) {
+        newResults.push([...res, opt]);
+      }
+    }
+    results = newResults;
+  }
+  return results.map(r => r.join('|'));
+}
+
+function renderPricingMatrix() {
+  const container = document.getElementById('pricing-combos-container');
+  const combos = getCombinations(currentVariants);
+  
+  let html = '';
+  
+  if (currentVariants.length > 0) {
+    html += `
+      <div class="bulk-actions">
+        <span style="font-size:0.8rem;color:var(--info);">💡 Tip: Set up the first combination and click "Sync All" to copy its tiers to everyone else.</span>
+        <button class="btn btn-secondary btn-sm" onclick="syncAllTiers()">🔄 Sync All to First</button>
+      </div>
+    `;
+  }
+
+  combos.forEach(combo => {
+    const label = combo === "" ? "Standard Pricing" : combo;
+    const tiers = currentPricingMatrix[combo]?.tiers || [{ minQty: 1, maxQty: null, pricePerUnit: 0 }];
+    
+    html += `
+      <div class="pricing-group" data-combo="${combo}">
+        <div class="pricing-combo-header">
+          <span>${label}</span>
+          <button class="btn btn-secondary btn-sm" onclick="addTier('${combo}')">+ Add Tier</button>
+        </div>
+        <div class="tiers-wrapper">
+          <div id="tiers-${btoa(combo).replace(/=/g,'')}">
+            ${tiers.map((t, ti) => `
+              <div class="tier-entry" data-index="${ti}">
+                <div class="form-group" style="margin:0;">
+                  <label class="form-label">Min Qty</label>
+                  <input type="number" class="form-control" value="${t.minQty}" onchange="updateTier('${combo}', ${ti}, 'minQty', this.value)">
+                </div>
+                <div class="form-group" style="margin:0;">
+                  <label class="form-label">Price per Unit (₹)</label>
+                  <input type="number" step="0.01" class="form-control" value="${t.pricePerUnit}" onchange="updateTier('${combo}', ${ti}, 'pricePerUnit', this.value)">
+                </div>
+                <button class="btn btn-danger btn-sm" style="margin-top:22px;" onclick="removeTier('${combo}', ${ti})">✕</button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+}
+
+function addTier(combo) {
+  if (!currentPricingMatrix[combo]) currentPricingMatrix[combo] = { tiers: [] };
+  const lastTier = currentPricingMatrix[combo].tiers[currentPricingMatrix[combo].tiers.length - 1];
+  const nextMin = lastTier ? parseInt(lastTier.minQty) + 100 : 1;
+  currentPricingMatrix[combo].tiers.push({ minQty: nextMin, maxQty: null, pricePerUnit: 0 });
+  renderPricingMatrix();
+}
+
+function updateTier(combo, index, field, value) {
+  if (!currentPricingMatrix[combo]) currentPricingMatrix[combo] = { tiers: [] };
+  if (!currentPricingMatrix[combo].tiers[index]) return;
+  currentPricingMatrix[combo].tiers[index][field] = field === 'pricePerUnit' ? parseFloat(value) : parseInt(value);
+}
+
+function removeTier(combo, index) {
+  if (currentPricingMatrix[combo]?.tiers) {
+    currentPricingMatrix[combo].tiers.splice(index, 1);
+    renderPricingMatrix();
+  }
+}
+
+function syncAllTiers() {
+  const combos = getCombinations(currentVariants);
+  if (combos.length < 2) return;
+  const firstTiers = JSON.parse(JSON.stringify(currentPricingMatrix[combos[0]]?.tiers || []));
+  combos.forEach(c => {
+    currentPricingMatrix[c] = { tiers: JSON.parse(JSON.stringify(firstTiers)) };
+  });
+  renderPricingMatrix();
+  showToast('Synced all combinations to first');
+}
+
 function saveProduct() {
   const name = document.getElementById('prod-name').value.trim();
-  if(!name) return;
+  if(!name) { showToast('Name is required', 'danger'); return; }
+  
+  // Update pricing matrix from current state
+  // We already update it on change via updateTier, but let's ensure consistency
+  const combos = getCombinations(currentVariants);
+  const finalMatrix = {};
+  combos.forEach(c => {
+    if (currentPricingMatrix[c]) {
+      // Sort tiers by minQty
+      const tiers = currentPricingMatrix[c].tiers.sort((a,b) => a.minQty - b.minQty);
+      // Update maxQty for each tier for backward compatibility
+      tiers.forEach((t, i) => {
+        t.maxQty = tiers[i+1] ? tiers[i+1].minQty - 1 : null;
+      });
+      finalMatrix[c] = { tiers };
+    } else {
+      finalMatrix[c] = { tiers: [{ minQty: 1, maxQty: null, pricePerUnit: 0 }] };
+    }
+  });
+
   const id = document.getElementById('prod-edit-id').value;
   const d = { 
     id: id || 'p'+Date.now(), 
@@ -488,12 +663,23 @@ function saveProduct() {
     images: currentProductImages, 
     description: document.getElementById('prod-desc').value, 
     variants: currentVariants, 
+    pricingMatrix: finalMatrix,
     featured: document.getElementById('prod-featured').checked,
     turnaround: document.getElementById('prod-turnaround').value,
     minOrderQty: parseInt(document.getElementById('prod-minqty').value) || 1
   };
-  if(id) { const i = state.products.findIndex(x => x.id === id); state.products[i] = d; } else { state.products.push(d); }
-  saveState(); renderProducts(); closeModal('product-modal');
+  
+  if(id) { 
+    const i = state.products.findIndex(x => x.id === id); 
+    state.products[i] = d; 
+  } else { 
+    state.products.push(d); 
+  }
+  
+  saveState(); 
+  renderProducts(); 
+  closeModal('product-modal');
+  showToast('Product saved');
 }
 
 // ===================== BUSINESS & HERO =====================
@@ -554,7 +740,13 @@ function slugify(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 function showToast(m, t='success') { const el = document.getElementById('toast'); el.textContent = m; el.className = 'toast '+t+' show'; setTimeout(() => el.classList.remove('show'), 2000); }
-function switchTab(el, id) { el.closest('.modal').querySelectorAll('.tab').forEach(t => t.classList.remove('active')); el.closest('.modal').querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); el.classList.add('active'); document.getElementById(id).classList.add('active'); }
+function switchTab(el, id) { 
+  el.closest('.modal').querySelectorAll('.tab').forEach(t => t.classList.remove('active')); 
+  el.closest('.modal').querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); 
+  el.classList.add('active'); 
+  document.getElementById(id).classList.add('active'); 
+  if(id === 'tab-pricing') renderPricingMatrix();
+}
 </script>
 </body>
 </html>

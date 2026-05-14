@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suresh — PrintPoint</title>
+<title>Potato — PrintPoint</title>
 <meta name="description" content="Premium Printing, Delivered Fast">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap');
@@ -233,28 +233,42 @@ footer{background:var(--text);color:rgba(255,255,255,0.7);padding:60px 0 24px;ma
 <div class="page-hero"><div class="container">
       <div class="breadcrumb">
         <a href="../index.html">Home</a><span>›</span>
-        <a href="../category/majdoor.html">Majdoor</a><span>›</span>
-        <span>Suresh</span>
+        
+        <span>Potato</span>
       </div>
-      <h1>Suresh</h1>
+      <h1>Potato</h1>
     </div></div><div class="container"><div class="prod-layout">
       <div class="prod-gallery">
-        <div class="prod-main-img"><div id="main-img"><img src="https://i.timesnowhindi.com/stories/MAJDOOR-AP_0.jpg" alt="Suresh"></div></div>
+        <div class="prod-main-img"><div id="main-img" style="display:flex;align-items:center;justify-content:center;font-size:4rem;">P</div></div>
         
       </div>
       <div class="prod-info">
-        <div class="info-chips"><div class="info-chip">⏱ 3</div><div class="info-chip">📦 Min. 150 units</div></div>
-        <h1 style="font-family:'Clash Display',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:10px;">Suresh</h1>
-        <p style="color:var(--text2);font-size:0.92rem;line-height:1.7;margin-bottom:24px;">normal majdoor</p>
+        <div class="info-chips"><div class="info-chip">📦 Min. 1 units</div></div>
+        <h1 style="font-family:'Clash Display',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:10px;">Potato</h1>
+        <p style="color:var(--text2);font-size:0.92rem;line-height:1.7;margin-bottom:24px;"></p>
         
+      <div class="variant-group">
+        <div class="variant-label">Sweetness</div>
+        <div class="variant-options">
+          <button class="variant-btn selected" data-variant="v1778773290998" data-option="very" onclick="selectOption('v1778773290998','very')">very</button><button class="variant-btn " data-variant="v1778773290998" data-option="little" onclick="selectOption('v1778773290998','little')">little</button><button class="variant-btn " data-variant="v1778773290998" data-option="not sweet at all" onclick="selectOption('v1778773290998','not sweet at all')">not sweet at all</button>
+        </div>
+      </div>
+    
+      <div class="variant-group">
+        <div class="variant-label">size</div>
+        <div class="variant-options">
+          <button class="variant-btn selected" data-variant="v1778773312416" data-option="small" onclick="selectOption('v1778773312416','small')">small</button><button class="variant-btn " data-variant="v1778773312416" data-option="big" onclick="selectOption('v1778773312416','big')">big</button><button class="variant-btn " data-variant="v1778773312416" data-option="medium" onclick="selectOption('v1778773312416','medium')">medium</button>
+        </div>
+      </div>
+    
         <div class="variant-group">
           <div class="variant-label">Quantity</div>
           <div class="qty-wrap">
-            <button class="qty-btn" onclick="changeQty(-150" >−</button>
-            <input class="qty-input" type="number" id="qty-input" value="150" min="150">
-            <button class="qty-btn" onclick="changeQty(150)">+</button>
+            <button class="qty-btn" onclick="changeQty(-1" >−</button>
+            <input class="qty-input" type="number" id="qty-input" value="1" min="1">
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
           </div>
-          <div style="font-size:0.75rem;color:var(--text3);margin-top:5px;">Minimum order: 150 units</div>
+          
         </div>
         <div class="price-display">
           <div class="price-per-unit" id="price-per-unit">₹0.00 / unit</div>
@@ -263,13 +277,22 @@ footer{background:var(--text);color:rgba(255,255,255,0.7);padding:60px 0 24px;ma
           <div class="price-tier-hint" id="price-tier-hint" style="display:none"></div>
         </div>
         <div class="order-btns">
-          <a href="https://wa.me/918898261111?text=Hi!%20I'd%20like%20to%20order%20from%20PrintPoint.%0A%0AProduct%3A%20Suresh%0APlease%20let%20me%20know%20your%20availability%20and%20confirm%20my%20order." id="wa-order-btn" target="_blank" class="btn btn-wa btn-lg">💬 Order on WhatsApp</a>
+          <a href="https://wa.me/918898261111?text=Hi!%20I'd%20like%20to%20order%20from%20PrintPoint.%0A%0AProduct%3A%20Potato%0APlease%20let%20me%20know%20your%20availability%20and%20confirm%20my%20order." id="wa-order-btn" target="_blank" class="btn btn-wa btn-lg">💬 Order on WhatsApp</a>
           <a href="../contact.html" class="btn btn-outline btn-lg">📧 Send Enquiry</a>
         </div>
       </div>
     </div>
 
-    
+    <hr class="section-divider">
+    <h3 style="font-family:'Clash Display',sans-serif;margin-bottom:16px;">Pricing Reference Table</h3>
+    <p style="font-size:0.83rem;color:var(--text2);margin-bottom:16px;">Prices shown are per unit (₹). Bulk discounts apply automatically.</p>
+    <div id="pricing-table-wrap" style="overflow-x:auto;">
+        <p style="font-size:0.8rem;color:var(--text2);margin-bottom:8px;">Showing prices for your current quantity selection (updates live above)</p>
+        <table class="pricing-tbl" id="static-price-table">
+          <thead><tr><th>Sweetness \ size</th><th>small</th><th>big</th><th>medium</th></tr></thead>
+          <tbody id="price-table-body"></tbody>
+        </table>
+      </div>
 
     </div>
 
@@ -306,9 +329,9 @@ footer{background:var(--text);color:rgba(255,255,255,0.7);padding:60px 0 24px;ma
   </div>
 </footer>
 <script>
-const variants = [];
-const pricingMatrix = {};
-const minQty = 150;
+const variants = [{"id":"v1778773290998","name":"Sweetness","options":["very","little","not sweet at all"]},{"id":"v1778773312416","name":"size","options":["small","big","medium"]}];
+const pricingMatrix = {"very|small":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"little|small":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"not sweet at all|small":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"very|big":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"little|big":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"not sweet at all|big":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"very|medium":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"little|medium":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":4}]},"not sweet at all|medium":{"tiers":[{"minQty":2,"maxQty":null,"pricePerUnit":10}]}};
+const minQty = 1;
 let selectedOptions = {};
 let qty = minQty;
 
@@ -358,9 +381,9 @@ function updatePriceDisplay() {
   }
   // update WA link
   const opts = variants.map(v => v.name + ': ' + (selectedOptions[v.id] || '')).join(', ');
-  const msg = encodeURIComponent('Hi! I want to order from PrintPoint.\n\nProduct: Suresh\n' + opts + '\nQuantity: ' + qty + '\nPrice/unit: ₹' + price.toFixed(2) + '\nTotal: ₹' + total.toFixed(2) + '\n\nPlease confirm availability!');
+  const msg = encodeURIComponent('Hi! I want to order from PrintPoint.\n\nProduct: Potato\n' + opts + '\nQuantity: ' + qty + '\nPrice/unit: ₹' + price.toFixed(2) + '\nTotal: ₹' + total.toFixed(2) + '\n\nPlease confirm availability!');
   document.getElementById('wa-order-btn').href = 'https://wa.me/918898261111?text=' + msg;
-  
+  updatePriceTable();
 }
 
 function selectOption(variantId, option) {
@@ -383,9 +406,28 @@ document.getElementById('qty-input').addEventListener('input', function() {
 });
 
 
+function updatePriceTable() {
+  const v1 = variants[0], v2 = variants[1];
+  const tbody = document.getElementById('price-table-body');
+  if (!tbody) return;
+  tbody.innerHTML = v1.options.map(o1 => {
+    return '<tr>' +
+      '<td><strong>' + o1 + (selectedOptions[v1.id] === o1 ? ' ✓' : '') + '</strong></td>' +
+      v2.options.map(o2 => {
+        const key = o1 + '|' + o2;
+        const tiers = pricingMatrix[key]?.tiers || [];
+        let p = 0;
+        for (let i = tiers.length - 1; i >= 0; i--) { if (qty >= tiers[i].minQty) { p = tiers[i].pricePerUnit; break; } }
+        if (!p && tiers[0]) p = tiers[0].pricePerUnit;
+        const active = selectedOptions[v1.id] === o1 && selectedOptions[v2.id] === o2;
+        return '<td style="' + (active ? 'background:var(--accent-light);font-weight:700;color:var(--accent)' : '') + '">₹' + p.toFixed(2) + '</td>';
+      }).join('') +
+    '</tr>';
+  }).join('');
+}
 
 // Gallery
-const images = ["https://i.timesnowhindi.com/stories/MAJDOOR-AP_0.jpg"];
+const images = [];
 let activeImg = 0;
 function setImage(i) {
   activeImg = i;

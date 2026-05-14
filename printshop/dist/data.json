@@ -5,7 +5,7 @@
     "phone": "+91 8898261111",
     "whatsapp": "918898261111",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1778743005504_0.png",
+    "logo": "/assets/img_1778773538240_0.png",
     "address": "BKC, Mumbai",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
@@ -36,7 +36,7 @@
       "id": "cat_1778239886476",
       "name": "Majdoor",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778743005505_1.png",
+      "imageIcon": "/assets/img_1778773538242_1.png",
       "description": "sasti dihadi now at your doorstep",
       "slug": "majdoor",
       "parentId": null
@@ -61,7 +61,7 @@
       "id": "cat_1778742919951",
       "name": "VISITING CARDS",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778743005507_2.png",
+      "imageIcon": "/assets/img_1778773538246_2.png",
       "description": "",
       "slug": "visiting-cards"
     }
@@ -422,6 +422,120 @@
       "variants": [],
       "featured": true,
       "turnaround": "1",
+      "minOrderQty": 1
+    },
+    {
+      "id": "p1778773361912",
+      "name": "Potato",
+      "slug": "potato",
+      "categoryId": "",
+      "images": [],
+      "description": "",
+      "variants": [
+        {
+          "id": "v1778773290998",
+          "name": "Sweetness",
+          "options": [
+            "very",
+            "little",
+            "not sweet at all"
+          ]
+        },
+        {
+          "id": "v1778773312416",
+          "name": "size",
+          "options": [
+            "small",
+            "big",
+            "medium"
+          ]
+        }
+      ],
+      "pricingMatrix": {
+        "very|small": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "little|small": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "not sweet at all|small": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "very|big": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "little|big": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "not sweet at all|big": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "very|medium": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "little|medium": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 4
+            }
+          ]
+        },
+        "not sweet at all|medium": {
+          "tiers": [
+            {
+              "minQty": 2,
+              "maxQty": null,
+              "pricePerUnit": 10
+            }
+          ]
+        }
+      },
+      "featured": false,
+      "turnaround": "",
       "minOrderQty": 1
     }
   ]
