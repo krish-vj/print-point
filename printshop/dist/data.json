@@ -5,7 +5,7 @@
     "phone": "+91 8898261111",
     "whatsapp": "918898261111",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1778773538240_0.png",
+    "logo": "/assets/img_1779707153138_0.png",
     "address": "BKC, Mumbai",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
@@ -24,519 +24,99 @@
   },
   "categories": [
     {
-      "id": "cat_1778239855882",
-      "name": "Majdoor subcategory",
-      "icon": "📁",
-      "imageIcon": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/250px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
-      "description": "idk",
-      "slug": "majdoor-subcategory",
-      "parentId": "cat_1778239886476"
-    },
-    {
-      "id": "cat_1778239886476",
-      "name": "Majdoor",
-      "icon": "📁",
-      "imageIcon": "/assets/img_1778773538242_1.png",
-      "description": "sasti dihadi now at your doorstep",
-      "slug": "majdoor",
-      "parentId": null
-    },
-    {
-      "id": "cat_1778258435585",
-      "name": "Icecream",
-      "icon": "📁",
-      "imageIcon": "https://content.jdmagicbox.com/quickquotes/images_main/butterscotch-ice-cream-tub-801321667-f2hakgsm.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit",
-      "description": "thandi thandi",
-      "slug": "icecream"
-    },
-    {
-      "id": "cat_1778258476345",
-      "name": "Gulab Jamun",
-      "icon": "📁",
-      "imageIcon": "https://www.vegrecipesofindia.com/wp-content/uploads/2022/10/gulab-jamun-recipe-01.jpg",
-      "description": "garam garam",
-      "slug": "gulab-jamun"
-    },
-    {
-      "id": "cat_1778742919951",
+      "id": "cat_1779706337757",
       "name": "VISITING CARDS",
       "icon": "📁",
-      "imageIcon": "/assets/img_1778773538246_2.png",
+      "imageIcon": "/assets/img_1779707153140_1.png",
       "description": "",
       "slug": "visiting-cards"
+    },
+    {
+      "id": "cat_1779706425964",
+      "name": "LEAFLET",
+      "icon": "📁",
+      "imageIcon": "/assets/img_1779707153141_2.jpeg",
+      "description": "",
+      "slug": "leaflet"
+    },
+    {
+      "id": "cat_1779706507197",
+      "name": "LETTER HEAD",
+      "icon": "📁",
+      "imageIcon": "/assets/img_1779707153142_3.jpeg",
+      "description": "",
+      "slug": "letter-head"
+    },
+    {
+      "id": "cat_1779706694236",
+      "name": "ENVELOPE",
+      "icon": "📁",
+      "imageIcon": "/assets/img_1779707153142_4.png",
+      "description": "",
+      "slug": "envelope"
     }
   ],
   "products": [
     {
-      "id": "prod_1778240050315",
-      "name": "Krish",
-      "slug": "krish",
-      "categoryId": "cat_1778239886476",
-      "description": "Lazy and Stupid",
-      "images": [
-        "https://cdn.britannica.com/68/143568-050-5246474F/Donkey.jpg"
-      ],
-      "variants": [
-        {
-          "id": "var_1778239955171",
-          "name": "Eyes Type",
-          "options": [
-            "Chasmish",
-            "Non Chasmish"
-          ]
-        },
-        {
-          "id": "var_1778239974671",
-          "name": "Weight",
-          "options": [
-            "Patlu",
-            "Motu",
-            "Fit"
-          ]
-        },
-        {
-          "id": "var_1778239995246",
-          "name": "Intelligence",
-          "options": [
-            "gadha",
-            "samajdar"
-          ]
-        }
-      ],
-      "pricingMatrix": {
-        "Chasmish|Patlu|gadha": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 10
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 8
-            }
-          ]
-        },
-        "Chasmish|Patlu|samajdar": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Chasmish|Motu|gadha": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Chasmish|Motu|samajdar": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Chasmish|Fit|gadha": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Chasmish|Fit|samajdar": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Non Chasmish|Patlu|gadha": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Non Chasmish|Patlu|samajdar": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Non Chasmish|Motu|gadha": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Non Chasmish|Motu|samajdar": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Non Chasmish|Fit|gadha": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        },
-        "Non Chasmish|Fit|samajdar": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": 499,
-              "pricePerUnit": 0
-            },
-            {
-              "minQty": 500,
-              "maxQty": null,
-              "pricePerUnit": 0
-            }
-          ]
-        }
-      },
-      "minOrderQty": 100,
-      "turnaround": "1 day",
-      "featured": true
-    },
-    {
-      "id": "prod_1778249370835",
-      "name": "Vyom",
-      "slug": "vyom",
-      "categoryId": "cat_1778239886476",
-      "description": "Hardworking and Handsome",
-      "images": [
-        "https://i.pinimg.com/736x/8d/97/a4/8d97a44b7c0e8992cfd41f2542c21a2f.jpg"
-      ],
-      "variants": [],
-      "pricingMatrix": {},
-      "minOrderQty": 100,
-      "turnaround": "2",
-      "featured": true
-    },
-    {
-      "id": "prod_1778249427876",
-      "name": "Suresh",
-      "slug": "suresh",
-      "categoryId": "cat_1778239886476",
-      "description": "normal majdoor",
-      "images": [
-        "https://i.timesnowhindi.com/stories/MAJDOOR-AP_0.jpg"
-      ],
-      "variants": [],
-      "pricingMatrix": {},
-      "minOrderQty": 150,
-      "turnaround": "3",
-      "featured": true
-    },
-    {
-      "id": "prod_1778251398304",
-      "name": "Kanye West",
-      "slug": "kanye-west",
-      "categoryId": "cat_1778239855882",
-      "description": "Celebrity majdoor",
-      "images": [
-        "https://ca-times.brightspotcdn.com/dims4/default/7ddc181/2147483647/strip/true/crop/2000x1397+0+0/resize/1200x838!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc3%2F86%2F10fca4684649a3c15aa085ad1423%2Fap22283068909163.jpg"
-      ],
-      "variants": [
-        {
-          "id": "var_1778251409027",
-          "name": "Luxury",
-          "options": [
-            "premium"
-          ]
-        }
-      ],
-      "pricingMatrix": {
-        "premium": {
-          "tiers": [
-            {
-              "minQty": 1,
-              "maxQty": null,
-              "pricePerUnit": 10000
-            }
-          ]
-        }
-      },
-      "minOrderQty": 1,
-      "turnaround": "7",
-      "featured": true
-    },
-    {
-      "id": "p1778260328679",
-      "name": "Mango",
-      "slug": "mango",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=1080/da/cms-assets/cms/product/fa246419-bb26-4188-868c-9f3077ab15f4.png"
-      ],
-      "description": "thandi thandi",
-      "variants": [],
-      "featured": true,
-      "turnaround": "2",
-      "minOrderQty": 1
-    },
-    {
-      "id": "p1778264563240",
-      "name": "choclate",
-      "slug": "choclate",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://www.cadburydessertscorner.com/hs-fs/hubfs/dc-website-2022/articles/bournville-dark-chocolate-ice-cream-why-not/bournville-dark-chocolate-ice-cream-why-not-feature.webp?width=768&height=432&name=bournville-dark-chocolate-ice-cream-why-not-feature.webp"
-      ],
-      "description": "thandi thandi",
-      "variants": [],
-      "featured": false,
-      "turnaround": "1",
-      "minOrderQty": 1
-    },
-    {
-      "id": "p1778309286606",
-      "name": "Ajay Devgan",
-      "slug": "ajay-devgan",
-      "categoryId": "cat_1778239855882",
-      "images": [
-        "https://etimg.etb2bimg.com/photo/88403238.cms"
-      ],
-      "description": "Indian celbrity majdoor",
-      "variants": [],
-      "featured": true,
-      "turnaround": "2",
-      "minOrderQty": 1
-    },
-    {
-      "id": "p1778309594686",
-      "name": "Vanilla",
-      "slug": "vanilla",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://static.toiimg.com/thumb/54677722.cms?imgsize=134423&width=800&height=800"
-      ],
-      "description": "thandi thandi",
-      "variants": [],
-      "featured": false,
-      "turnaround": "1",
-      "minOrderQty": 1
-    },
-    {
-      "id": "p1778313160575",
-      "name": "Chikoo",
-      "slug": "chikoo",
-      "categoryId": "cat_1778258435585",
-      "images": [
-        "https://th.bing.com/th/id/OIP.IF6O7wEMyhSMPKVtf8CJ-wHaFP?w=255&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3"
-      ],
-      "description": "chikooo",
-      "variants": [],
-      "featured": false,
-      "turnaround": "",
-      "minOrderQty": 1
-    },
-    {
       "id": "p1778742128303",
-      "name": "visiting card ice",
-      "slug": "visiting-card-ice",
-      "categoryId": "cat_1778258435585",
+      "name": "NT Visiting Cards",
+      "slug": "nt-visiting-cards",
+      "categoryId": "cat_1779706337757",
       "images": [
-        "https://www.simplysated.com/wp-content/uploads/2014/08/Homemade-Vanilla-Ice-Cream-A22-1-P7270022.jpg"
+        "/assets/img_1779707153143_5.jpeg"
       ],
-      "description": "timepass",
+      "description": "180 Micron NT Card with Spot UV",
       "variants": [],
-      "featured": true,
-      "turnaround": "1",
-      "minOrderQty": 1
-    },
-    {
-      "id": "p1778773361912",
-      "name": "Potato",
-      "slug": "potato",
-      "categoryId": "",
-      "images": [],
-      "description": "",
-      "variants": [
-        {
-          "id": "v1778773290998",
-          "name": "Sweetness",
-          "options": [
-            "very",
-            "little",
-            "not sweet at all"
-          ]
-        },
-        {
-          "id": "v1778773312416",
-          "name": "size",
-          "options": [
-            "small",
-            "big",
-            "medium"
-          ]
-        }
-      ],
       "pricingMatrix": {
-        "very|small": {
+        "": {
           "tiers": [
             {
-              "minQty": 2,
+              "minQty": 1,
               "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "little|small": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "not sweet at all|small": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "very|big": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "little|big": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "not sweet at all|big": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "very|medium": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "little|medium": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 4
-            }
-          ]
-        },
-        "not sweet at all|medium": {
-          "tiers": [
-            {
-              "minQty": 2,
-              "maxQty": null,
-              "pricePerUnit": 10
+              "pricePerUnit": 0
             }
           ]
         }
       },
-      "featured": false,
-      "turnaround": "",
-      "minOrderQty": 1
+      "featured": true,
+      "turnaround": "10",
+      "minOrderQty": 1000
+    },
+    {
+      "id": "p1779707060324",
+      "name": "ArtCard 350 gsm",
+      "slug": "artcard-350-gsm",
+      "categoryId": "cat_1779706337757",
+      "images": [
+        "/assets/img_1779707153143_6.png"
+      ],
+      "description": "350 gsm Art Card with Spot UV",
+      "variants": [
+        {
+          "id": "v1779707017948",
+          "name": "One Side printing with Spot UV",
+          "options": []
+        },
+        {
+          "id": "v1779707050964",
+          "name": "Two Side printing with Spot UV",
+          "options": []
+        }
+      ],
+      "pricingMatrix": {
+        "Standard|Standard": {
+          "tiers": [
+            {
+              "minQty": 1000,
+              "maxQty": null,
+              "pricePerUnit": 2
+            }
+          ]
+        }
+      },
+      "featured": true,
+      "turnaround": "7",
+      "minOrderQty": 1000
     }
   ]
 }
