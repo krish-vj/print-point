@@ -2,23 +2,23 @@
   "business": {
     "name": "PrintPoint",
     "tagline": "Premium Printing, Delivered Fast",
-    "phone": "+91 8898261111",
-    "whatsapp": "918898261111",
+    "phone": "+91 7021227498",
+    "whatsapp": "91 7021227498",
     "email": "v.eprintpoint@gmail.com",
-    "logo": "/assets/img_1779709038394_0.png",
-    "address": "BKC, Mumbai",
+    "logo": "/assets/img_1779709094563_0.png",
+    "address": "CST Road, Kalina, BKC, Mumbai - 400098",
     "socialLinks": {
       "instagram": "https://www.instagram.com/printp313/",
       "facebook": ""
     },
     "heroSlides": [
       {
-        "image": "https://www.cmzoo.org/wp-content/uploads/WH-7-2025-Lion_Abuto_CaitlinG_7.24.25-7A-400x600.jpg",
-        "caption": "Vyom"
+        "image": "https://pixabay.com/photos/textured-business-cards-design-card-10092204/",
+        "caption": "Visiting Card"
       },
       {
-        "image": "https://cdn.britannica.com/68/143568-050-5246474F/Donkey.jpg",
-        "caption": "Krish"
+        "image": "https://unsplash.com/photos/stationery-and-envelopes-arranged-on-a-black-surface-1aTEm48JZCA",
+        "caption": "Business Stationery"
       }
     ]
   },
@@ -27,7 +27,7 @@
       "id": "cat_1779706337757",
       "name": "VISITING CARDS",
       "icon": "📁",
-      "imageIcon": "/assets/img_1779709038395_1.png",
+      "imageIcon": "/assets/img_1779709094565_1.png",
       "description": "",
       "slug": "visiting-cards"
     },
@@ -35,7 +35,7 @@
       "id": "cat_1779706425964",
       "name": "LEAFLET",
       "icon": "📁",
-      "imageIcon": "/assets/img_1779709038396_2.jpeg",
+      "imageIcon": "/assets/img_1779709094566_2.jpeg",
       "description": "",
       "slug": "leaflet"
     },
@@ -43,7 +43,7 @@
       "id": "cat_1779706507197",
       "name": "LETTER HEAD",
       "icon": "📁",
-      "imageIcon": "/assets/img_1779709038397_3.jpeg",
+      "imageIcon": "/assets/img_1779709094567_3.jpeg",
       "description": "",
       "slug": "letter-head"
     },
@@ -51,7 +51,7 @@
       "id": "cat_1779706694236",
       "name": "ENVELOPE",
       "icon": "📁",
-      "imageIcon": "/assets/img_1779709038398_4.png",
+      "imageIcon": "/assets/img_1779709094567_4.png",
       "description": "",
       "slug": "envelope"
     }
@@ -63,7 +63,7 @@
       "slug": "nt-visiting-cards",
       "categoryId": "cat_1779706337757",
       "images": [
-        "/assets/img_1779709038399_5.jpeg"
+        "/assets/img_1779709094568_5.jpeg"
       ],
       "description": "180 Micron NT Card with Spot UV",
       "variants": [],
@@ -88,7 +88,7 @@
       "slug": "artcard-350-gsm",
       "categoryId": "cat_1779706337757",
       "images": [
-        "/assets/img_1779709038399_6.png"
+        "/assets/img_1779709094569_6.png"
       ],
       "description": "350 gsm Art Card with Spot UV",
       "variants": [
